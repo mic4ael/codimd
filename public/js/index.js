@@ -32,7 +32,8 @@ import {
   noteid,
   noteurl,
   urlpath,
-  version
+  version,
+  userDisplayName
 } from './lib/config'
 
 import {
@@ -1708,7 +1709,8 @@ var io = require('socket.io-client')
 var socket = io.connect({
   path: urlpath ? '/' + urlpath + '/socket.io/' : '',
   query: {
-    noteId: noteid
+    noteId: noteid,
+    displayName: userDisplayName,
   },
   timeout: 5000, // 5 secs to timeout,
   reconnectionAttempts: 20 // retry 20 times on connect failed
