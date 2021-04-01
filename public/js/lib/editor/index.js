@@ -414,12 +414,14 @@ export default class Editor {
     const setType = () => {
       if (this.editor.getOption('indentWithTabs')) {
         Cookies.set('indent_type', 'tab', {
-          expires: 365
+          expires: 365,
+          sameSite: 'Lax'
         })
         type.text('Tab Size:')
       } else {
         Cookies.set('indent_type', 'space', {
-          expires: 365
+          expires: 365,
+          sameSite: 'Lax'
         })
         type.text('Spaces:')
       }
@@ -430,11 +432,13 @@ export default class Editor {
       var unit = this.editor.getOption('indentUnit')
       if (this.editor.getOption('indentWithTabs')) {
         Cookies.set('tab_size', unit, {
-          expires: 365
+          expires: 365,
+          sameSite: 'Lax'
         })
       } else {
         Cookies.set('space_units', unit, {
-          expires: 365
+          expires: 365,
+          sameSite: 'Lax'
         })
       }
       widthLabel.text(unit)
@@ -502,7 +506,8 @@ export default class Editor {
     const setKeymapLabel = () => {
       var keymap = this.editor.getOption('keyMap')
       Cookies.set('keymap', keymap, {
-        expires: 365
+        expires: 365,
+        sameSite: 'Lax'
       })
       label.text(keymap)
       this.restoreOverrideEditorKeymap()
@@ -537,7 +542,8 @@ export default class Editor {
     const setTheme = theme => {
       this.editor.setOption('theme', theme)
       Cookies.set('theme', theme, {
-        expires: 365
+        expires: 365,
+        sameSite: 'Lax'
       })
       this.statusIndicators.find('.status-theme li').removeClass('active')
       this.statusIndicators.find(`.status-theme li[value="${theme}"]`).addClass('active')
@@ -639,7 +645,8 @@ export default class Editor {
         spellcheckToggle.removeClass('active')
 
         Cookies.set('spellcheck', false, {
-          expires: 365
+          expires: 365,
+          sameSite: 'Lax'
         })
 
         self.editor.setOption('mode', defaultEditorMode)
@@ -647,7 +654,8 @@ export default class Editor {
         spellcheckToggle.addClass('active')
 
         Cookies.set('spellcheck', lang, {
-          expires: 365
+          expires: 365,
+          sameSite: 'Lax'
         })
 
         self.editor.setOption('mode', 'spell-checker')
@@ -668,7 +676,8 @@ export default class Editor {
         this.editor.setOption('gutters', [lintGutter, ...gutters])
       }
       Cookies.set('linter', true, {
-        expires: 365
+        expires: 365,
+        sameSite: 'Lax'
       })
     } else {
       this.editor.setOption('gutters', gutters.filter(g => g !== lintGutter))
@@ -717,7 +726,8 @@ export default class Editor {
     )
     if (overrideBrowserKeymap.is(':checked')) {
       Cookies.set('preferences-override-browser-keymap', true, {
-        expires: 365
+        expires: 365,
+        sameSite: 'Lax'
       })
       this.restoreOverrideEditorKeymap()
     } else {
