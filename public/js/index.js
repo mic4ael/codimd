@@ -1633,7 +1633,8 @@ function toggleNightMode () {
   } else {
     Cookies.set('nightMode', !isActive, {
       expires: 365,
-      sameSite: 'Lax'
+      sameSite: 'Lax',
+      secure: window.location.protocol === 'https:'
     })
   }
 }

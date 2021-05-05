@@ -415,13 +415,15 @@ export default class Editor {
       if (this.editor.getOption('indentWithTabs')) {
         Cookies.set('indent_type', 'tab', {
           expires: 365,
-          sameSite: 'Lax'
+          sameSite: 'Lax',
+          secure: window.location.protocol === 'https:'
         })
         type.text('Tab Size:')
       } else {
         Cookies.set('indent_type', 'space', {
           expires: 365,
-          sameSite: 'Lax'
+          sameSite: 'Lax',
+          secure: window.location.protocol === 'https:'
         })
         type.text('Spaces:')
       }
@@ -433,12 +435,14 @@ export default class Editor {
       if (this.editor.getOption('indentWithTabs')) {
         Cookies.set('tab_size', unit, {
           expires: 365,
-          sameSite: 'Lax'
+          sameSite: 'Lax',
+          secure: window.location.protocol === 'https:'
         })
       } else {
         Cookies.set('space_units', unit, {
           expires: 365,
-          sameSite: 'Lax'
+          sameSite: 'Lax',
+          secure: window.location.protocol === 'https:'
         })
       }
       widthLabel.text(unit)
@@ -507,7 +511,8 @@ export default class Editor {
       var keymap = this.editor.getOption('keyMap')
       Cookies.set('keymap', keymap, {
         expires: 365,
-        sameSite: 'Lax'
+        sameSite: 'Lax',
+        secure: window.location.protocol === 'https:'
       })
       label.text(keymap)
       this.restoreOverrideEditorKeymap()
@@ -543,7 +548,8 @@ export default class Editor {
       this.editor.setOption('theme', theme)
       Cookies.set('theme', theme, {
         expires: 365,
-        sameSite: 'Lax'
+        sameSite: 'Lax',
+        secure: window.location.protocol === 'https:'
       })
       this.statusIndicators.find('.status-theme li').removeClass('active')
       this.statusIndicators.find(`.status-theme li[value="${theme}"]`).addClass('active')
@@ -646,7 +652,8 @@ export default class Editor {
 
         Cookies.set('spellcheck', false, {
           expires: 365,
-          sameSite: 'Lax'
+          sameSite: 'Lax',
+          secure: window.location.protocol === 'https:'
         })
 
         self.editor.setOption('mode', defaultEditorMode)
@@ -655,7 +662,8 @@ export default class Editor {
 
         Cookies.set('spellcheck', lang, {
           expires: 365,
-          sameSite: 'Lax'
+          sameSite: 'Lax',
+          secure: window.location.protocol === 'https:'
         })
 
         self.editor.setOption('mode', 'spell-checker')
@@ -677,7 +685,8 @@ export default class Editor {
       }
       Cookies.set('linter', true, {
         expires: 365,
-        sameSite: 'Lax'
+        sameSite: 'Lax',
+        secure: window.location.protocol === 'https:'
       })
     } else {
       this.editor.setOption('gutters', gutters.filter(g => g !== lintGutter))
@@ -727,7 +736,8 @@ export default class Editor {
     if (overrideBrowserKeymap.is(':checked')) {
       Cookies.set('preferences-override-browser-keymap', true, {
         expires: 365,
-        sameSite: 'Lax'
+        sameSite: 'Lax',
+        secure: window.location.protocol === 'https:'
       })
       this.restoreOverrideEditorKeymap()
     } else {
